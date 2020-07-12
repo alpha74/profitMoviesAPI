@@ -39,6 +39,10 @@ def get_offset_days( datestr ):
 
 """
 	Returns indices of profitable movies.
+		- Uses pre-built "movie_selector/choose_movies.exe"
+		- Writes data to file "movie_selector/movie_schedules.txt"
+		- Reads selected movies from "movie_selector/chosen_schedule.txt"
+		- Returns as Python object
 """
 def get_profitable_movies( movies_days ):
 	# Example selections
