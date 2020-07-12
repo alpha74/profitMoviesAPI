@@ -79,15 +79,57 @@ void fill_input_data( vector<MovieSchedule> &movie_sch )
 }
 
 
+void backtrack(  vector<int> &chosenlist, int &maxmovies, vector<int> &templist, int i, vector<MovieSchedule> &movie_sch )
+{
+	if( templist.size() > maxmovies )
+	{
+		maxmovies = templist.size() ;
+		chosenlist = templist ;
+	}
+	
+	if( i >= movie_sch.size() )
+		return ;
+		
+	for( ; i < movie_sch.size() ; i++ )
+	{
+		int last_i = i - 1 ;
+		while( movie_sch[ last_i ].end >= movie_sch[i].start && i < movie_sch.size() )
+		{
+			i++ ;
+		}
+		
+		if( i < movie_sch.size() )
+		{
+			templist.push_back( i ) ;
+			backtrack( chosenlist, maxmovies, templist, i+1, movie_sch ) ;
+			templist.pop_back() ;
+		}
+	}
+	
+}
+
+
+/*
+	Index function to select profitable movies
+		@movie_sch : Schedule of movies
+	
+	Returns list of profitable movies
+*/
 vector<int> select_max_movies( vector<MovieSchedule> &movie_sch ) 
 {
-	vector<int> list ;
+	vector<int> chosenlist ;
+	int maxmovies = 0 ;
 	
-	list.push_back( 1 ) ;
-	list.push_back( 2 ) ;
-	list.push_back( 3 ) ;
+	vector<int> templist ;
 	
-	return list ;
+	for( int i = 0 ; i < movie_sch.size() ; i++ )
+	{
+		templist.push_back( i ) ;
+		backtrack( chosenlist, maxmovies, templist, i+1, movie_sch ) ;
+		templist.pop_back() ;
+	}
+	
+	return chosenlist ;
 }
 
 
@@ -101,10 +143,17 @@ void write_output_data( vector<int> chosen_movies )
 	ofstream fout ;
 	fout.open( OUTPUT_FILE, ios::out ) ;
 	
+	// TEMP
+	cout << "\n Chosen : " ;
+	
 	for( int i = 0 ; i < chosen_movies.size() ; i++ )
 	{
 		fout << chosen_movies[ i ] ;
-		fout << "\n" ;
+		fout << "\n" ; 
+		
+		// TEMP
+		cout << chosen_movies[i] ;
+		cout << " " ;
 	}
 	
 	fout.close() ;
@@ -120,6 +169,7 @@ int main()
 	// Fills input data from file
 	fill_input_data( movie_sch ) ;
 	
+	// TEMP : Print input data from file
 	for( int i = 0 ; i < movie_sch.size() ; i++ )
 	{
 		cout << "\n\n ID: " << movie_sch[ i ].id ;
