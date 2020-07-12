@@ -1,0 +1,44 @@
+{
+	"schedule" : [
+		{
+			"movie_name" : "Bala",
+			"start_date" : "8 Jan",
+			"end_date" : "28 Jan"
+		},
+		{
+			"movie_name" : "Rock",
+			"start_date" : "20 Jan",
+			"end_date" : "30 Jan"
+		},
+		{
+			"movie_name" : "Bala",
+			"start_date" : "8 Jan",
+			"end_date" : "28 Jan"
+		},
+		{
+			"movie_name" : "Rock",
+			"start_date" : "20 Jan",
+			"end_date" : "30 Jan"
+		},
+		{
+			"movie_name" : "PolicyMaker",
+			"start_date" : "29 Jan",
+			"end_date" : "16 Feb"
+		},
+		{
+			"movie_name" : "Brave",
+			"start_date" : "2 Feb",
+			"end_date" : "14 Feb"
+		},
+		{
+			"movie_name" : "Drive",
+			"start_date" : "10 Feb",
+			"end_date" : "18 Feb"
+		},
+		{
+			"movie_name" : "Race",
+			"start_date" : "15 Feb",
+			"end_date" : "28 Feb"
+		}
+	]
+}

@@ -18,5 +18,5 @@ from datetime import datetime
 	Index function to receive movies data.
 	Return list of profitable movies.
 """
-def select_profit_movies( ip_data ):
+def select_profit_movies( ip_data ):	
 	return ip_data
