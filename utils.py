@@ -38,6 +38,15 @@ def get_offset_days( datestr ):
 
 
 """
+	Returns indices of profitable movies.
+"""
+def get_profitable_movies( movies_days ):
+	# Example selections
+	list = [ 1, 3, 4 ]
+	
+	return list
+
+"""
 	Modifies dates in input data to number of days as offset.
 	Returns new data as a list
 """
@@ -70,4 +79,18 @@ def modify_dates( ip_data ):
 	Return list of profitable movies.
 """
 def select_profit_movies( ip_data ):	
-	return modify_dates( ip_data )
+	# Change dates to days offsets
+	movies_days = modify_dates( ip_data )
+	
+	# Get profitable movies indices. Example output. Will use func call
+	selected_movies = get_profitable_movies( movies_days )
+
+	# Return movies which are profitable. 
+	profit_movies = []
+	
+	for index in selected_movies:
+		profit_movies.append( ip_data["schedule"][index] )
+		
+	return profit_movies	
+	
+	
