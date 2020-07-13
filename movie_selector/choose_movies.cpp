@@ -13,9 +13,10 @@ using namespace std ;
 /*
 	The input and output file names
 */
-#define INPUT_FILE "movie_schedules.txt"
-#define OUTPUT_FILE "chosen_schedule.txt"
+#define INPUT_FILE "movie_selector/movie_schedules.txt"
+#define OUTPUT_FILE "movie_selector/chosen_schedule.txt"
 
+#define DEBUG false	// For printing debug statements
 
 class MovieSchedule
 {
@@ -143,17 +144,21 @@ void write_output_data( vector<int> chosen_movies )
 	ofstream fout ;
 	fout.open( OUTPUT_FILE, ios::out ) ;
 	
-	// TEMP
-	cout << "\n Chosen : " ;
+	if( DEBUG )
+		cout << "\n Chosen : " ;
 	
 	for( int i = 0 ; i < chosen_movies.size() ; i++ )
 	{
 		fout << chosen_movies[ i ] ;
-		fout << "\n" ; 
 		
-		// TEMP
-		cout << chosen_movies[i] ;
-		cout << " " ;
+		if( i+1 < chosen_movies.size() )
+			fout << " " ; 
+		
+		if( DEBUG )
+		{
+			cout << chosen_movies[i] ;
+			cout << " " ;
+		}
 	}
 	
 	fout.close() ;
@@ -169,12 +174,14 @@ int main()
 	// Fills input data from file
 	fill_input_data( movie_sch ) ;
 	
-	// TEMP : Print input data from file
-	for( int i = 0 ; i < movie_sch.size() ; i++ )
+	if( DEBUG )
 	{
-		cout << "\n\n ID: " << movie_sch[ i ].id ;
-		cout << "\n start: " << movie_sch[ i ].start ;
-		cout << "\n end: " << movie_sch[ i ].end ;
+		for( int i = 0 ; i < movie_sch.size() ; i++ )
+		{
+			cout << "\n\n ID: " << movie_sch[ i ].id ;
+			cout << "\n start: " << movie_sch[ i ].start ;
+			cout << "\n end: " << movie_sch[ i ].end ;
+		}
 	}
 	
 	// Stores list of selected movies

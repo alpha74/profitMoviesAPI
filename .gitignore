@@ -1,4 +1,7 @@
 venv/
 __pycache__/
 movie_selector/*.exe
+movie_selector/*.out
 movie_selector/*.txt
+*.exe
+*.out

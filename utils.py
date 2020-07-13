@@ -10,12 +10,17 @@
 	======================================
 """
 
+import subprocess
 import json
 from datetime import datetime
 
 # Start date of year to be considered.
 BASE_YEAR = 2020
 BASE_DATE = datetime( BASE_YEAR, 1, 1 )
+
+MOVIE_SELECTOR = "movie_selector\\choose_movies.exe"
+WRITE_FILE = "movie_selector/movie_schedules.txt"
+READ_FILE = "movie_selector/chosen_schedule.txt"
 
 
 """
@@ -39,16 +44,40 @@ def get_offset_days( datestr ):
 
 """
 	Returns indices of profitable movies.
-		- Uses pre-built "movie_selector/choose_movies.exe"
-		- Writes data to file "movie_selector/movie_schedules.txt"
-		- Reads selected movies from "movie_selector/chosen_schedule.txt"
+		- Uses pre-built MOVIE_SELECTOR
+		- Writes data to file WRITE_FILE
+		- Reads selected movies from READ_FILE
 		- Returns as Python object
 """
 def get_profitable_movies( movies_days ):
-	# Example selections
-	list = [ 1, 3, 4 ]
 	
-	return list
+	# Write input data to WRITE_FILE
+	fwrite = open( WRITE_FILE, "w" )
+	
+	for movie in movies_days:
+		fwrite.write( str(movie['start']) + " " + str(movie['end']) )
+		fwrite.write( "\n" )
+	
+	fwrite.close()
+	
+	# Run MOVIE_SELECTOR as cmd
+	subprocess.call( "movie_selector\choose_movies.exe" )
+	
+	
+	# Read chosen indices from file	
+	chosenlist = []
+	with open( READ_FILE, 'r' ) as file:
+		chosenlist = file.read()
+		
+	# Separate the indices using split. Convert str to int
+	chosenlist = chosenlist.split(" ")
+	chosenindex = []		# New variable for storing int values 
+	
+	for index in chosenlist:
+		chosenindex.append(int(index))
+		
+	# Return the indices as int	
+	return chosenindex
 
 """
 	Modifies dates in input data to number of days as offset.
@@ -67,7 +96,6 @@ def modify_dates( ip_data ):
 	
 	for movie in movies:
 		movie_record = {
-							"movie_name" : movie["movie_name"],
 							"start" : get_offset_days( movie["start_date"] ),
 							"end" : get_offset_days( movie["end_date"] )
 						}
