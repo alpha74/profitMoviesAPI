@@ -14,6 +14,7 @@
 
 - Build the file `movie_selector/choose_movies.cpp`.
 - Place the executable file in dir `movie_selector`.
+- Update path to this file in `utils.py` as var `MOVIE_SELECTOR`.
 
 #### Step2
 
@@ -47,15 +48,15 @@
 			"end_date" : "30 Jan"
 		},
 		{
-            "movie_name": "Brave",
-            "start_date": "2 Feb",
-            "end_date": "14 Feb"
-        },
-        {
-            "movie_name": "Race",
-            "start_date": "15 Feb",
-            "end_date": "28 Feb"
-        }
+		    "movie_name": "Brave",
+		    "start_date": "2 Feb",
+		    "end_date": "14 Feb"
+		},
+		{
+		    "movie_name": "Race",
+		    "start_date": "15 Feb",
+		    "end_date": "28 Feb"
+		}
 	]
 }
 ```
