@@ -42,11 +42,30 @@ def get_profit_movies():
 	# Fetch payload movies data
 	ip_data = request.get_json()
 	
-	# Passes json to function. Function data as Python list
-	list_movies = utils.select_profit_movies( ip_data )
+	status_code = "Success"
+	
+	try:
+		# Passes json to function. Function data as Python list
+		list_movies = utils.select_profit_movies( ip_data )
+	
+	except Exception as e:
+		print( "Exception occured: " + str(e) )
+		
+		# If any error ocurrs, change status_code to Failed
+		status_code = "Failed"
+	
+	
+	# Create new dict which will be returned back to caller
+	response = { 
+				"status" : status_code
+			 }
+	
+	# Attach result status to response
+	if( status_code == "Success" ):
+		response[ "result" ] = list_movies
 	
 	# Return result to caller. End of API.
-	return Response( json.dumps( list_movies ), mimetype = 'text/json' )
+	return Response( json.dumps( response ), mimetype = 'text/json' )
 	
 	
 
