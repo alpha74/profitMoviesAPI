@@ -1,5 +1,5 @@
 # Profit Movies API
-### Author: Aman Kumar:amanalphakumar@gmail.com
+#### Aman Kumar : amanalphakumar@gmail.com
 
 
 ### Tech Used:
@@ -25,7 +25,7 @@
 ### APIs
 - `/`
 	- Method : `GET`
-	- Check if server is running.
+	- Used to check if server is running.
 
 - `/api/get_profit_movies`
 	- Method : `POST`
@@ -87,7 +87,7 @@
 ```
 
 
-#### Failure
+#### Failure : When internal error occurs.
 ```
 {
     "status": "Failed"
@@ -97,6 +97,8 @@
 
 ### Dependencies:
 - API is tested using `Postman v7.25.0`.
+- Python scripts call `movie_selector/choose_movies.exe` (in my code) internally to generate results.
+- Communication is done using file I/O.
 - Input and Output file names in python scripts and cpp programs should be same.
 - Executable paths if changed, should be updated in python scripts.
 
