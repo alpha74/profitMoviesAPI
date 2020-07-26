@@ -1,6 +1,7 @@
 # Profit Movies API
 #### Aman Kumar : amanalphakumar@gmail.com
 
+Project created for implementing the task which is [here](https://github.com/alpha74/profitMoviesAPI/blob/master/task_Movies.pdf)
 
 ### Tech Used:
 - Python
