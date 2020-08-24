@@ -8,6 +8,7 @@ Project created for implementing the task which is [here](https://github.com/alp
 - Flask framework for API handling
 - C++ in `movie_selector/choose_movies.cpp` used in computation.
 
+-----
 
 ### Run
 
@@ -23,6 +24,7 @@ Project created for implementing the task which is [here](https://github.com/alp
 - Run `python mainhandler.py`.
 - By default, the server runs on `localhost:5000`, if no errors are encountered.
 
+-----
 
 ### APIs
 - `/`
@@ -101,6 +103,7 @@ Project created for implementing the task which is [here](https://github.com/alp
 }
 ```
 
+-----
 
 ### Dependencies:
 - APIs are tested using `Postman v7.25.0`.
