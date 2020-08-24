@@ -1,12 +1,12 @@
 # Profit Movies API
-#### Aman Kumar : amanalphakumar@gmail.com
+#### alpha74
 
 Project created for implementing the task which is [here](https://github.com/alpha74/profitMoviesAPI/blob/master/task_Movies.pdf)
 
 ### Tech Used:
 - Python
 - Flask framework for API handling
-- C++ in `movie_selector/choose_movies.cpp`
+- C++ in `movie_selector/choose_movies.cpp` used in computation.
 
 
 ### Run
@@ -21,7 +21,7 @@ Project created for implementing the task which is [here](https://github.com/alp
 
 - Create a virtual environment from `requirements.txt`.
 - Run `python mainhandler.py`.
-- By default, the server runs on `localhost:5000`
+- By default, the server runs on `localhost:5000`, if no errors are encountered.
 
 
 ### APIs
@@ -34,7 +34,9 @@ Project created for implementing the task which is [here](https://github.com/alp
 	- Returns data of chosen profitable movies.
 
 
-### Sample Payload JSON
+### Sample Payload in JSON 
+- Payload for `/api/get_profit_movies`
+
 ```
 {
 	"schedule" : [
@@ -62,9 +64,12 @@ Project created for implementing the task which is [here](https://github.com/alp
 }
 ```
 
-### Sample output JSON
+### Sample output in JSON
+- Output for `/api/get_profit_movies`. 
+- Returns `Success` when computation is completed with no internal errors.
+- Returns `Failure` when some internal error occurs.
 
-#### Success
+#### Success output
 ```
 {
     "status": "Success",
@@ -89,7 +94,7 @@ Project created for implementing the task which is [here](https://github.com/alp
 ```
 
 
-#### Failure : When internal error occurs.
+#### Failure output
 ```
 {
     "status": "Failed"
@@ -98,10 +103,12 @@ Project created for implementing the task which is [here](https://github.com/alp
 
 
 ### Dependencies:
-- API is tested using `Postman v7.25.0`.
-- Python scripts call `movie_selector/choose_movies.exe` (in my code) internally to generate results.
-- Communication is done using file I/O.
+- APIs are tested using `Postman v7.25.0`.
+- Python scripts call `movie_selector/choose_movies.exe` (executable file generated after build in Step1) internally to generate results.
+- Communication between python scripts and cpp executable is done using file I/O.
 - Input and Output file names in python scripts and cpp programs should be same.
 - Executable paths if changed, should be updated in python scripts.
 
 
+### PRs
+- PRs accepted on `master`
